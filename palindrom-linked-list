@@ -1,0 +1,86 @@
+
+// var sixth={
+//   data:"R",
+//   next: null
+// }
+var fifth={
+  data:"A",
+  next: null
+}
+var fourth={
+  data:"C",
+  next: fifth
+}
+var third={
+  data:"E",
+  next: fourth
+}
+var second={
+  data:"C",
+  next: third
+}
+  var first={
+  data:"A",
+  next: second
+}
+  let head = {
+  data:"R",
+  next: first
+}
+
+
+
+
+
+
+
+function reverse(head) {
+  let cur = head;
+ let prev = null;
+  let temp;
+  // console.log(cur)
+  while(cur!=null){
+     temp = cur.next;
+    cur.next = prev;
+    prev = cur;
+    cur = temp;
+  }
+    // console.log(prev)
+  
+  return prev
+}
+
+// newHead = reverse(head);
+
+// console.log(newHead)
+
+// while(newHead != null) {
+//   console.log(newHead)
+//   newHead = newHead.next
+// }
+
+function palindrome(head) {
+
+  let fast = head;
+  let slow = head;
+
+  while(fast !=null && fast.next != null) {
+    fast =  fast.next.next;
+    slow = slow.next;
+  }
+
+  let revHead = reverse(slow);
+
+  slow = head;
+  while(slow != revHead){
+    console.log(slow)
+    if(slow.data !== revHead.data) return false;
+    slow = slow.next;
+    revHead = revHead.next;
+  }
+
+  return true
+  
+}
+
+console.log(palindrome(head))
